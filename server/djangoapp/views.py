@@ -91,10 +91,11 @@ def registration(request):
 
 # Update the `get_dealerships` view to render the index page with
 # a list of dealerships
-    if (state == "All"):
-        endpoint = "/fetchDealers"
-    else:
-        endpoint = "/fetchDealers/"+state
+    endpoint = "/fetchDealers"
+    # if (state == "All"):
+    #     endpoint = "/fetchDealers"
+    # else:
+    #     endpoint = "/fetchDealers/"+state
     dealerships = get_request(endpoint)
     return JsonResponse({"status": 200, "dealers": dealerships})
 
@@ -127,7 +128,7 @@ def get_dealer_details(request, dealer_id):
 # Create a `add_review` view to submit a review
 def add_review(request):
     if not request.user.is_anonymous:
-        data = json.loads(request.body)
+        # data = json.loads(request.body)
         try:
             # response = post_review(data)
             return JsonResponse({"status": 200})
